@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     public Transform spawnProjectilePosition;
-    public Transform turretPivot;
     public float projectileSpeed;
     public GameObject projectilePrefab;
     public float fireRate = 0f;
@@ -15,6 +14,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
             if (Time.time >= fireCountDown)
             {
                 FireProjectile();
@@ -23,9 +23,9 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    void FireProjectile()
+    public void FireProjectile()
     {
-        GameObject cloneProjectile = Instantiate(projectilePrefab, spawnProjectilePosition.position, turretPivot.transform.rotation);
+        GameObject cloneProjectile = Instantiate(projectilePrefab, spawnProjectilePosition.transform.position, spawnProjectilePosition.transform.rotation);
         Destroy(cloneProjectile,3);
     }
 }
