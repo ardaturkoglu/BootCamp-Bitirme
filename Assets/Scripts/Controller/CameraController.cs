@@ -19,4 +19,9 @@ public class CameraController : MonoBehaviour
 
         transform.position = cameraPosition;
     }
+
+    public void CameraNextStage()
+    {
+        cameraPosition.x = player.transform.position.x;
+    }
 }
