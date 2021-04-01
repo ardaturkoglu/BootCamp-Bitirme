@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     CharacterController playerCharacterController;
-    JoystickController joystick;
+    public JoystickController joystick;
     public float speed;
-    Animator playerAnim;
+    public Animator playerAnim;
     // Start is called before the first frame update
     void Start()
     {

@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
     public Transform playerSpawnPosition;
     //public Transform startPoint;
     public int currentStage = 0;
-    int lastStage = 5;
+    //int lastStage = 5;
     CameraController cameraController;
 
     // Start is called before the first frame update

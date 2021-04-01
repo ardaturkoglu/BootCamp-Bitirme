@@ -4,55 +4,33 @@ using UnityEngine;
 
 public class PlayerDestination : MonoBehaviour
 {
+    public static PlayerDestination Instance { get { return instance; } }
     private static PlayerDestination instance;
-    public static PlayerDestination Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<PlayerDestination>();
-                if (instance == null)
-                {
-                    var instanceContainer = new GameObject("PlayerDestination");
-                    instance = instanceContainer.AddComponent<PlayerDestination>();
-                }
-            }
-            return instance;
-        }
-    }
-
-    public bool getATarget;
-    float currentDistance;
+    public bool getATarget = false;
+    float currentDistance = 0;
     float closestDistance = 100f;
-    float TargetDistance = 100f;
+    float targetDistance = 100f;
     int closeDistanceIndex = 0;
-    int TargetIndex = -1;
-    public LayerMask layerMask;
-
-    public List<GameObject> EnemyList = new List<GameObject>();
-
-    public GameObject playerBolt;
-    public Transform AttackPoint;
-    JoystickController joystickController;
-    ProjectileController projectileController;
+    public int targetIndex = -1;
+    int previousTargetIndex = 0;
     PlayerController playerController;
-    private void Awake()
-    {
-        joystickController = FindObjectOfType<JoystickController>();
-        projectileController = GetComponent<ProjectileController>();
-        playerController = GetComponent<PlayerController>();
-    }
+
+    public List<GameObject> enemyList = new List<GameObject>();
+
     private void OnDrawGizmos()
     {
         if (getATarget)
         {
-            for (int i = 0; i < EnemyList.Count; i++)
+            for (int i = 0; i < enemyList.Count; i++)
             {
+                if (enemyList[i] == null)
+                {
+                    return;
+                }
                 RaycastHit hit;
-                bool isHit = Physics.Raycast(transform.position, EnemyList[i].transform.position - transform.position, out hit, 20f, layerMask);
-
-                if (isHit && hit.transform.CompareTag("Enemy"))
+                bool isHit = Physics.Raycast(transform.position, enemyList[i].transform.position - transform.position, out hit, 20f);
+                
+                if (isHit)
                 {
                     Gizmos.color = Color.green;
                 }
@@ -60,60 +38,85 @@ public class PlayerDestination : MonoBehaviour
                 {
                     Gizmos.color = Color.red;
                 }
-                Gizmos.DrawRay(transform.position, EnemyList[i].transform.position - transform.position);
+                Gizmos.DrawRay(transform.position,enemyList[i].transform.position -transform.position);
             }
         }
     }
 
-    void Update()
+    private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
 
-        SetTarget();
+        playerController = GetComponent<PlayerController>();
     }
 
-    void SetTarget()
+    private void Update()
     {
-        if (EnemyList.Count != 0)
+        SetDestination();
+        AttackTarget();
+    }
+
+    void SetDestination()
+    {
+        if (enemyList.Count != 0)
         {
+            
             currentDistance = 0f;
             closeDistanceIndex = 0;
-            TargetIndex = -1;
+            targetIndex = -1;
 
-            for (int i = 0; i < EnemyList.Count; i++)
+            for (int i = 0; i < enemyList.Count; i++)
             {
-                currentDistance = Vector3.Distance(transform.position, EnemyList[i].transform.position);
+                currentDistance = Vector3.Distance(transform.position, enemyList[i].transform.position);
 
                 RaycastHit hit;
-                bool isHit = Physics.Raycast(transform.position, EnemyList[i].transform.position - transform.position, out hit, 20f, layerMask);
-
-                if (isHit && hit.transform.CompareTag("Enemy"))
+                bool isHit = Physics.Raycast(transform.position, enemyList[i].transform.position - transform.position, out hit, 10f);
+                
+                if (isHit )
                 {
-                    if (TargetDistance >= currentDistance)
+
+                    if (targetDistance >= currentDistance)
                     {
-                        TargetIndex = i;
-                        TargetDistance = currentDistance;
+                        
+                        targetIndex = i;
+                        targetDistance = currentDistance;
                     }
                 }
-
                 if (closestDistance >= currentDistance)
                 {
                     closeDistanceIndex = i;
                     closestDistance = currentDistance;
                 }
-
-                transform.LookAt(EnemyList[TargetIndex].transform);
-                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(EnemyList[TargetIndex].transform.position), Time.deltaTime * 10);
-                //projectileController.FireProjectile();
             }
 
-            if (TargetIndex == -1)
+            if (targetIndex == -1)
             {
-                TargetIndex = closeDistanceIndex;
+                targetIndex = closeDistanceIndex;
             }
+
             closestDistance = 100f;
-            TargetDistance = 100f;
+            targetDistance = 100f;
             getATarget = true;
+
         }
     }
 
+    void AttackTarget()
+    {
+        if (targetIndex == -1 || enemyList.Count == 0)
+        {
+            playerController.playerAnim.SetBool("IsAttacking", false);
+        }
+        if (getATarget && playerController.joystick.move == Vector3.zero && enemyList.Count != 0)
+        {
+            transform.LookAt(enemyList[targetIndex].transform);
+        }
+    }
 }

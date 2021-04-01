@@ -12,15 +12,18 @@ public class ProjectileInfo : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Enemy"))
-        {
-            transform.Translate(Vector3.zero);
-            Destroy(other.gameObject);
-            gameObject.SetActive(false);
-        }
+        
         if (other.transform.CompareTag("Wall"))
         {
             transform.Translate(Vector3.zero);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
             gameObject.SetActive(false);
         }
     }

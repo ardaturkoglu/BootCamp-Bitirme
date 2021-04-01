@@ -22,6 +22,7 @@ public class PlayerHpBar : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyAttackHand")
         {
+            //Instantiate(EffectSet.Instance.playerDamageEffect, PlayerDestination.Instance.AttackPoint.position, Quaternion.Euler(90, 0, 0));
             currentHealth -= 10;
             isHit = true;
         }
@@ -32,6 +33,7 @@ public class PlayerHpBar : MonoBehaviour
         {
             
             isHit = false;
+            
         }
     }
 

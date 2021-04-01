@@ -38,8 +38,8 @@ public class ZoneCondition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInThisRoom = true;
-            PlayerDestination.Instance.EnemyList = new List<GameObject> (EnemyListInRoom);
-            Debug.Log("Enter New Room! Mob Count: " + PlayerDestination.Instance.EnemyList.Count);
+            PlayerDestination.Instance.enemyList = new List<GameObject> (EnemyListInRoom);
+            Debug.Log("Enter New Room! Mob Count: " + PlayerDestination.Instance.enemyList.Count);
             Debug.Log("Player ENter new room");
         }
         if (other.CompareTag("Enemy"))
@@ -64,7 +64,7 @@ public class ZoneCondition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInThisRoom = false;
-            PlayerDestination.Instance.EnemyList.Clear();
+            PlayerDestination.Instance.enemyList.Clear();
             Debug.Log("Player Exit");
         }
 

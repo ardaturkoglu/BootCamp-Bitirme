@@ -30,7 +30,7 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     {
         pad.position = eventData.position;
         pad.gameObject.SetActive(true);
-        Debug.Log( "" + (5/10));
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
