@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     PlayerDestination playerDestination;
     Vector3 lookPosition;
     ProjectileController projectileController;
+    Vector3 distance;
     void Start()
     {
        
@@ -21,28 +22,31 @@ public class CharacterMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         projectileController = GetComponent<ProjectileController>();
+        Debug.Log(lookPosition);
     }
 
     private void Update()
     {
+
         if (playerDestination.enemyList.Count != 0)
         {
-           lookPosition = playerDestination.enemyList[playerDestination.targetIndex].transform.position;
+            distance = playerDestination.enemyList[playerDestination.targetIndex].transform.position - transform.position;
+            lookPosition = playerDestination.enemyList[playerDestination.targetIndex].transform.position;
+            
         }
-       
-        
-        Vector3 lookDirection = lookPosition - transform.position;
-        lookDirection.y = 0;
 
-        transform.LookAt(transform.position + lookDirection, Vector3.up);
-        if (playerDestination.getATarget && playerDestination.enemyList[playerDestination.targetIndex] != null)
+        if (playerDestination.enemyList.Count != 0)
         {
-            if (Time.time >= fireCountDown)
+            Vector3 lookDirection = lookPosition - transform.position;
+            lookDirection.y = 0;
+            if (distance.magnitude < 5f)
             {
-                projectileController.FireProjectile();
-                fireCountDown = Time.time + 1 / fireRate;
+                transform.LookAt(transform.position + lookDirection, Vector3.up);
+                FireProjectile();
             }
-        }
+            
+        } 
+        
     }
     void FixedUpdate()
     {
@@ -62,4 +66,15 @@ public class CharacterMovement : MonoBehaviour
 
     }
     
+    void FireProjectile()
+    {
+        if (playerDestination.getATarget && playerDestination.enemyList[playerDestination.targetIndex] != null)
+        {
+            if (Time.time >= fireCountDown)
+            {
+                projectileController.FireProjectile();
+                fireCountDown = Time.time + 1 / fireRate;
+            }
+        }
+    }
 }

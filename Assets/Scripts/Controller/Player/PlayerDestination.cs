@@ -7,7 +7,7 @@ public class PlayerDestination : MonoBehaviour
     public static PlayerDestination Instance { get { return instance; } }
     private static PlayerDestination instance;
     public bool getATarget = false;
-    float currentDistance = 0;
+    public float currentDistance = 0;
     float closestDistance = 100f;
     float targetDistance = 100f;
     int closeDistanceIndex = 0;
