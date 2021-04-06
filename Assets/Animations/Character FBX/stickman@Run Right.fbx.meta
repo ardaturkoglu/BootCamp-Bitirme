@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: aa528d168c457de4786c4fbea99eeeb2
+guid: 2fb6e57ba35869740bff548d46f98269
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Firing Rifle
+    second: Run Right
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,13 +35,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Firing Rifle
+      name: Run Right
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 15
       wrapMode: 0
-      orientationOffsetY: -46.68
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -63,7 +63,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 2

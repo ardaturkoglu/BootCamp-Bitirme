@@ -18,22 +18,21 @@ public class PlayerHpBar : MonoBehaviour
             //TODO dead anim
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "EnemyAttackHand")
+        if (other.CompareTag("EnemyAttackHand"))
         {
             //Instantiate(EffectSet.Instance.playerDamageEffect, PlayerDestination.Instance.AttackPoint.position, Quaternion.Euler(90, 0, 0));
             currentHealth -= 10;
             isHit = true;
+            
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (other.CompareTag("EnemyAttackHand"))
         {
-            
             isHit = false;
-            
         }
     }
 

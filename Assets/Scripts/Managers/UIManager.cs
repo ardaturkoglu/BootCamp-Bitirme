@@ -7,32 +7,29 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     
-    public GameObject player;
+    PlayerHpBar playerHpBar;
     public Image healthImage;
     public TextMeshProUGUI currentHealthText;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        playerHpBar = FindObjectOfType<PlayerHpBar>();
+        healthImage.fillAmount = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerHpBar>().isHit)
+        if (playerHpBar.isHit)
         {
+            Debug.Log("Hello");
             UpdatePlayerHealth();
+            healthImage.fillAmount = playerHpBar.currentHealth / PlayerHpBar.playerMaxHealth;
         }
-        healthImage.fillAmount = player.GetComponent<PlayerHpBar>().currentHealth / PlayerHpBar.playerMaxHealth;
     }
 
     void UpdatePlayerHealth()
-    {
-        
-        currentHealthText.text =  player.GetComponent<PlayerHpBar>().currentHealth.ToString();
-        
+    {       
+        currentHealthText.text =  playerHpBar.currentHealth.ToString();       
     }
-
 
 }

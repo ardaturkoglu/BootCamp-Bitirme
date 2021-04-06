@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
 
-    private float offSetY = 14;
-    private float offSetZ = -5;
+    private float offSetY = 15;
+    private float offSetZ = -7;
 
     Vector3 cameraPosition;
 

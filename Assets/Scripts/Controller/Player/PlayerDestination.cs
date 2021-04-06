@@ -59,8 +59,7 @@ public class PlayerDestination : MonoBehaviour
 
     private void Update()
     {
-        SetDestination();
-        AttackTarget();
+        SetDestination();       
     }
 
     void SetDestination()
@@ -104,19 +103,13 @@ public class PlayerDestination : MonoBehaviour
             closestDistance = 100f;
             targetDistance = 100f;
             getATarget = true;
-
+            
         }
     }
 
     void AttackTarget()
     {
-        if (targetIndex == -1 || enemyList.Count == 0)
-        {
-            playerController.playerAnim.SetBool("IsAttacking", false);
-        }
-        if (getATarget && playerController.joystick.move == Vector3.zero && enemyList.Count != 0)
-        {
-            transform.LookAt(enemyList[targetIndex].transform);
-        }
+       
     }
+
 }

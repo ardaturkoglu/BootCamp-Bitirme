@@ -5,11 +5,10 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     public Transform spawnProjectilePosition;
-    public float projectileSpeed;
     public GameObject projectilePrefab;
     public float fireRate = 0f;
     private float fireCountDown = 0f;
-
+   
     public List<GameObject> projectiles = new List<GameObject>();
 
     void Update()
@@ -42,10 +41,12 @@ public class ProjectileController : MonoBehaviour
         {
             if (Time.time >= fireCountDown)
             {
+                
+                
                 cloneProjectile = Instantiate(projectilePrefab, spawnProjectilePosition.transform.position, spawnProjectilePosition.transform.rotation);
                 //cloneProjectile.transform.parent = transform.parent;
                 projectiles.Add(cloneProjectile);
-                fireCountDown = Time.time + 1 / fireRate;
+               
             }
             
         }
