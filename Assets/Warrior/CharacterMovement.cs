@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour
             
         }
 
-        if (playerDestination.enemyList.Count != 0)
+        if (playerDestination.enemyList.Count != 0 && !playerDestination.enemyList[playerDestination.targetIndex].gameObject.GetComponent<ZombieAIController>().isEnemyDead)
         {
             Vector3 lookDirection = lookPosition - transform.position;
             lookDirection.y = 0;

@@ -5595,8 +5595,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.13175836, y: 1.6058984, z: 0.66066885}
-  m_Center: {x: 0.047892287, y: 0.78591657, z: 0.17792463}
+  m_Size: {x: 0.13175836, y: 1.568505, z: 0.66066885}
+  m_Center: {x: 0.047892287, y: 0.80461323, z: 0.17792463}
 --- !u!195 &519734218
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5615,7 +5615,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.63
+  m_Height: 1.59
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -5634,7 +5634,8 @@ MonoBehaviour:
   agent: {fileID: 519734218}
   enemyAnimator: {fileID: 519734222}
   runSpeed: 2
-  isPlayerActiveInZone: 1
+  isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!4 &519734220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5ee98bc794bbaa248afab3adf70828dd,
@@ -5650,10 +5651,10 @@ Rigidbody:
   m_GameObject: {fileID: 519734216}
   serializedVersion: 2
   m_Mass: 500
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 3
+  m_AngularDrag: 999
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -5797,7 +5798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &530376253
 Transform:
   m_ObjectHideFlags: 0
@@ -6002,7 +6003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140096659794746, guid: 63f209a73d2eb4e469c7ea5b5d8afd38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4140096659794746, guid: 63f209a73d2eb4e469c7ea5b5d8afd38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7153,7 +7154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &669239994
 Transform:
   m_ObjectHideFlags: 0
@@ -12333,7 +12334,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ee98bc794bbaa248afab3adf70828dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ee98bc794bbaa248afab3adf70828dd,
         type: 3}
@@ -13635,6 +13636,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1202183230}
   runSpeed: 2
   isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!195 &1202183233
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18562,6 +18564,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1618388628}
   runSpeed: 2
   isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!195 &1618388631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20543,6 +20546,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1750596560}
   runSpeed: 2
   isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!195 &1750596563
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21689,6 +21693,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1810812878}
   runSpeed: 2
   isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!195 &1810812881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -22453,6 +22458,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1836606701}
   runSpeed: 2
   isPlayerActiveInZone: 0
+  isEnemyDead: 0
 --- !u!195 &1836606704
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -22670,7 +22676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1851233066
 Transform:
   m_ObjectHideFlags: 0
@@ -23513,7 +23519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1936241461
 Transform:
   m_ObjectHideFlags: 0
@@ -24199,7 +24205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2005258632
 Transform:
   m_ObjectHideFlags: 0
@@ -25710,7 +25716,7 @@ PrefabInstance:
     - target: {fileID: 8831412081437729459, guid: e15de8e3209d64d479a8aedb3d80843f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.054
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8831412081437729459, guid: e15de8e3209d64d479a8aedb3d80843f,
         type: 3}
