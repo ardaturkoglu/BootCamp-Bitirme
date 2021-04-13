@@ -107,9 +107,4 @@ public class PlayerDestination : MonoBehaviour
         }
     }
 
-    void AttackTarget()
-    {
-       
-    }
-
 }

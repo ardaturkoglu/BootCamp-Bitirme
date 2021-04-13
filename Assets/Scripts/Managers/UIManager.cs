@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     {
         if (playerHpBar.isHit)
         {
-            Debug.Log("Hello");
+            
             UpdatePlayerHealth();
             healthImage.fillAmount = playerHpBar.currentHealth / PlayerHpBar.playerMaxHealth;
         }

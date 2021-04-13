@@ -18,13 +18,15 @@ public class ProjectileInfo : MonoBehaviour
             transform.Translate(Vector3.zero);
             gameObject.SetActive(false);
         }
+        
+        if (other.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Enemy"))
-        {
-            gameObject.SetActive(false);
-        }
+        
     }
 }

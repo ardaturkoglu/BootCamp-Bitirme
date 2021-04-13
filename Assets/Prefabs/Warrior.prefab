@@ -2007,9 +2007,10 @@ GameObject:
   - component: {fileID: 6225088065880255305}
   - component: {fileID: 6225088065880255306}
   - component: {fileID: 6225088065880255307}
+  - component: {fileID: 1354230902990306440}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Player
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2061,7 +2062,7 @@ Rigidbody:
   m_Mass: 3
   m_Drag: 4
   m_AngularDrag: 999
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -2076,10 +2077,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.19
+  m_Radius: 0.2904357
   m_Height: 1.7150824
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8467022, z: 0}
+  m_Center: {x: 0.1041418, y: 0.8467022, z: -0.025422484}
 --- !u!114 &6225088065880255305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2096,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   speed: 10
   gun: {fileID: 962822285138199842}
+  fireRate: 1
 --- !u!114 &6225088065880255306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2108,6 +2110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getATarget: 0
+  currentDistance: 0
   targetIndex: -1
   enemyList: []
 --- !u!114 &6225088065880255307
@@ -2127,6 +2130,20 @@ MonoBehaviour:
     type: 3}
   fireRate: 1
   projectiles: []
+--- !u!114 &1354230902990306440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197865048450807817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e898da49745934cbe069337c5c954a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  isHit: 0
 --- !u!1 &8214780806076422994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2330,7 @@ PrefabInstance:
     - target: {fileID: 8095610408957924947, guid: 0be049fc43935cf46b06d1d120169056,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12
+      value: 0.028
       objectReference: {fileID: 0}
     - target: {fileID: 8095610408957924947, guid: 0be049fc43935cf46b06d1d120169056,
         type: 3}
@@ -2323,7 +2340,7 @@ PrefabInstance:
     - target: {fileID: 8095610408957924947, guid: 0be049fc43935cf46b06d1d120169056,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.467
+      value: 0.527
       objectReference: {fileID: 0}
     - target: {fileID: 8095610408957924947, guid: 0be049fc43935cf46b06d1d120169056,
         type: 3}
